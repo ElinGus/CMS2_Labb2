@@ -31,7 +31,7 @@
       if ( $loop->have_posts() ) {
         while ( $loop->have_posts() ) : $loop->the_post(); global $product;
           ?><ul><?php
-          echo $product->get_total_sales();
+          //echo $product->get_total_sales();
           ?><h3><?php echo $product->get_name(); ?></h3><?php
           ?><img><?php echo $product->get_image(); ?></img><?php
           ?><p><?php echo $product->get_price(); ?> kr</p><?php
