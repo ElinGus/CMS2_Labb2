@@ -64,6 +64,7 @@
           }
 
           $weight = wc_get_weight( $weight, 'kg' );
+
           if( $weight < 1 ) {
                 $cost = 30;
 
