@@ -18,7 +18,7 @@
    // Funktion för shortcode [top_selling_products]
   function top_selling_products_shortcode( $atts ) {
 
-    // Argument för hur produkterna i listan ska visas.
+    // Gör så att de 10 mest sålda produkterna visas.
     $args = array(
       'post_type' => 'product',
       'posts_per_page' => 10,
@@ -26,20 +26,21 @@
       'orderby'   => 'meta_value_num',
       );
 
-      // Loop som hämtar produkterna från databasen och skiver ut dem på sidan
+    // Loop som hämtar produkterna från databasen och skiver ut dem på sidan.
     $loop = new WP_Query( $args );
+
       if ( $loop->have_posts() ) {
         while ( $loop->have_posts() ) : $loop->the_post(); global $product;
+
           ?><ul><?php
-          //echo $product->get_total_sales();
-          ?><h3><?php echo $product->get_name(); ?></h3><?php
-          ?><img><?php echo $product->get_image(); ?></img><?php
-          ?><p><?php echo $product->get_price(); ?> kr</p><?php
-          ?><p><?php echo $product->get_description(); ?></p><?php
+            //echo $product->get_total_sales();
+            ?><h4><?php echo $product->get_name(); ?></h4><?php
+            ?><p><?php echo $product->get_price(); ?> kr</p><?php
+            ?><p><?php echo $product->get_description(); ?></p><?php
           ?></ul><?php
         endwhile;
         } else {
-            echo __( 'No products found' );
+            return __( 'No products found' );
         }
       wp_reset_postdata();
 
